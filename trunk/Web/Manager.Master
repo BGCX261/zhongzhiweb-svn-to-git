@@ -1,0 +1,217 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Manager.Master.cs" Inherits="Cms.Web.Manager" %>
+
+<%@ Register src="Controls/CopyRight.ascx" tagname="CopyRight" tagprefix="uc1" %>
+
+<%@ Register src="Controls/FriendLink.ascx" tagname="FriendLink" tagprefix="uc2" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title><%=getInvoiceTitle()%></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="Stylesheet" href="Css/Style.css" type="text/css" />
+<style type="text/css">
+<!--
+body {
+ background-color:#e0e0e0;
+}
+#LayerMenuBG {
+	position:absolute;
+	width:1000px;
+	height:50px;
+	z-index:-1;
+	left: 50%;
+	margin-left:-500px;
+	top: 300px;
+}
+.menuNormalL
+{
+     background-image: url('Images/menu_BG_L.gif');
+}
+.menuNormal
+{
+     background-image: url('Images/Menu_BG.gif');
+}
+.menuNormalR
+{
+     background-image: url('Images/menu_BG_R.gif');
+}
+.menuOverL
+{
+	background-image: url('Images/Menu_BG_Over_L.gif');
+}
+.menuOver
+{
+	background-image: url('Images/Menu_BG_Over.gif');
+}
+.menuOverR
+{
+	background-image: url('Images/Menu_BG_Over_R.gif');
+}
+.menuDownL
+{
+	background-image: url('Images/Menu_BG_Down_L.gif');
+}
+.menuDown
+{
+	background-image: url('Images/Menu_BG_Down.gif');
+}
+.menuDownR
+{
+	background-image: url('Images/Menu_BG_Down_R.gif');
+}
+-->
+</style>
+<script type="text/javascript">
+<!--
+    function menuClick(id) {
+        var odiv = document.getElementById("menu" + id);
+        if (odiv) {
+            switch (id) {
+                case 1:
+                    self.location = "Default.aspx";
+                    break;
+                case 2:
+                    self.location = "ProductList.aspx";
+                    break;
+                case 3:
+                    self.location = "Solution.aspx";
+                    break;
+                case 4:
+                    self.location = "News.aspx";
+                    break;
+                case 5:
+                    self.location = "ContactInfo.aspx";
+                    break;
+            }
+        }
+    }
+    function menuOver(id) {
+        var odiv = document.getElementById("menu" + id);
+        if (odiv) {
+            switch (id) {
+                case 1:
+                    if (odiv.className != "menuOverL" && odiv.className != "menuDownL")
+                        odiv.className = "menuOverL";
+                    break;
+                case 5:
+                    if (odiv.className != "menuOverR" && odiv.className != "menuDownR")
+                        odiv.className = "menuOverR";
+                    break;
+                default:
+                    if (odiv.className != "menuOver" && odiv.className != "menuDown")
+                        odiv.className = "menuOver";
+                    break;
+            }
+        }
+    }
+    function menuLeave(id) {
+        var odiv = document.getElementById("menu" + id);
+        if (odiv) {
+            switch (id) {
+                case 1:
+                    if (odiv.className != "menuNormalL" && odiv.className != "menuDownL")
+                        odiv.className = "menuNormalL";
+                    break;
+                case 5:
+                    if (odiv.className != "menuNormalR" && odiv.className != "menuDownR")
+                        odiv.className = "menuNormalR";
+                    break;
+                default:
+                    if (odiv.className != "menuNormal" && odiv.className != "menuDown")
+                        odiv.className = "menuNormal";
+                    break;
+            }
+        }
+    }
+    function menuEnable(id) {
+        var odiv = document.getElementById("menu" + id);
+        if (odiv) {
+            switch (id) {
+                case 1:
+                    odiv.className = "menuDownL";
+                    break;
+                case 5:
+                    odiv.className = "menuDownR";
+                    break;
+                default:
+                       odiv.className = "menuDown";
+                    break;
+            }
+        }
+    }
+-->
+</script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <!--Logo.Start-->
+            <table width="1000" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+                <tr>
+                    <td align="center">
+                        <img src="<%=getLogoImage() %>" width="1000" height="60" alt="Logo" /></td>
+                </tr>
+                <tr>
+                    <td align="center">
+                        <img src="<%=getStartPage() %>" width="1000" height="240" alt="StartPage" /></td>
+                </tr>
+            </table>
+            <!--Logo.End-->
+            <!-- Nav.Start -->
+            <table width="1000" height="50"border="0" align="center" cellpadding="0" cellspacing="0" style="position:relative;top:1px;">
+                <tr>
+                    <td id="menu1" class="menuNormalL" onclick="menuClick(1)" onmouseover="menuOver(1)" 
+                        onmouseout="menuLeave(1)" width="200" height="50" align="center" valign="middle">
+                            <span class="indexText" >首 页</span>
+                    </td>
+                    <td id="menu2" class="menuNormal" onclick="menuClick(2)" onmouseover="menuOver(2)" 
+                        onmouseout="menuLeave(2)" width="200" height="50" align="center" valign="middle">
+                            <span class="indexText" >产品天地</span>
+                    </td>
+                    <td id="menu3" class="menuNormal" onclick="menuClick(3)" onmouseover="menuOver(3)" 
+                        onmouseout="menuLeave(3)" width="200" height="50" align="center" valign="middle">
+                            <span class="indexText" >解决方案</span>
+                    </td>
+                    <td id="menu4" class="menuNormal" onclick="menuClick(4)" onmouseover="menuOver(4)" 
+                        onmouseout="menuLeave(4)" width="200" height="50" align="center" valign="middle">
+                            <span class="indexText" >活动分享</span>
+                    </td>
+                    <td id="menu5" class="menuNormalR" onclick="menuClick(5)" onmouseover="menuOver(5)" 
+                        onmouseout="menuLeave(5)" width="200" height="50" align="center" valign="middle">
+                            <span class="indexText" >联系我们</span>
+                    </td>
+                </tr>
+            </table>
+            <!-- Nav.End -->
+             <!-- Main.Start -->
+            <table width="1000" border="0" align="center" cellpadding="0" cellspacing="0" background="images/main_bg.gif">
+                <tr>
+                    <td width="266" align="left" valign="top">
+                     <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                                 
+                    </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+            </table>
+            <!-- Main.Start -->
+            <!-- Footer.Start -->
+            <table width="1000" border="0" align="center" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF">
+                <tr>
+                    <td height="35" bgcolor="#ffffff">
+                        <uc2:FriendLink ID="FriendLink1" runat="server" />
+                    </td>
+                </tr>
+                <tr>
+                    <td height="30" align="center" valign="middle" >
+                        <uc1:CopyRight ID="CopyRight1" runat="server" />
+                    </td>
+                </tr>
+            </table>
+            <!-- Footer.Start -->
+        </div>
+    </form>
+</body>
+</html>
